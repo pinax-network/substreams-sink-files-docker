@@ -21,8 +21,12 @@ RUN go install ./cmd/substreams-sink-files
 ###
 FROM alpine
 
+# Copy a custom entrypoint script
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Copy the compiled binary from the build stage
 COPY --from=builder /go/bin/substreams-sink-files /usr/local/bin/substreams-sink-files
 
 # Default command
-ENTRYPOINT ["substreams-sink-files"]
+ENTRYPOINT ["docker-entrypoint.sh"]
