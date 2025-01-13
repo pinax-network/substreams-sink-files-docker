@@ -16,7 +16,7 @@ else
   DEV_FLAG="--development-mode"
 fi
 
-exec substreams-sink-files run \
+substreams-sink-files run \
   "${NETWORK}" \
   "${MANIFEST}" \
   "${MODULE}" \
