@@ -30,5 +30,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 # Copy the compiled binary from the build stage
 COPY --from=builder /go/bin/substreams-sink-files /usr/local/bin/substreams-sink-files
 
+# Prometheus Metrics & pprof analysis
+EXPOSE 9102 6060
+
 # Default command
 ENTRYPOINT ["docker-entrypoint.sh"]
