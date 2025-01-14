@@ -8,9 +8,11 @@ set -e
 : "${S3_REGION:=us-east-1}"
 : "${STATE_STORE:=state.yaml}"
 : "${PRODUCTION_MODE:=false}"
+: "${METRICS_LISTEN_PORT:=9102}"
 
 OUTPUT_STORE="s3://pinax/${NETWORK}/${S3_BUCKET}?region=${S3_REGION}"
 NETWORK_URL="${NETWORK}.substreams.pinax.network:443"
+METRICS_LISTEN_ADDR="0.0.0.0:${METRICS_LISTEN_PORT}"
 
 # Conditionally add --development-mode
 if [ "${PRODUCTION_MODE}" = "true" ]; then
@@ -29,4 +31,5 @@ substreams-sink-files run \
   --parquet-default-column-compression "${PARQUET_DEFAULT_COLUMN_COMPRESSION}" \
   --file-block-count "${FILE_BLOCK_COUNT}" \
   --state-store "${STATE_STORE}" \
+  --metrics-listen-addr ${METRICS_LISTEN_ADDR}" \
   ${DEV_FLAG}
