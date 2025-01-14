@@ -16,18 +16,19 @@ docker run --rm -it --env-file .env substreams-sink-files
 
 ```env
 # Substreams Network
-NETWORK=eos.substreams.pinax.network:443
+NETWORK=eos
 SUBSTREAMS_API_KEY=...
-PRODUCTION_MODE=false
+PRODUCTION_MODE=true
 
 # Substreams Package
-START_BLOCK=415074379
+START_BLOCK=412880782
 STOP_BLOCK=
 MODULE=map_events
 MANIFEST=https://github.com/pinax-network/substreams-raw-blocks/releases/download/v1.0.0/raw-blocks-antelope-v1.0.0.spkg
 
 # AWS S3 configs
-OUTPUT_STORE=s3://pinax/eos/v1.0.0?region=us-east-1
+S3_BUCKET=8490866fe98ab7d3f811ccf0f18da3cb46a378f9
+S3_REGION=us-east-1
 AWS_ACCESS_KEY_ID=...
 AWS_SECRET_ACCESS_KEY=...
 
