@@ -31,5 +31,5 @@ substreams-sink-files run \
   --parquet-default-column-compression "${PARQUET_DEFAULT_COLUMN_COMPRESSION}" \
   --file-block-count "${FILE_BLOCK_COUNT}" \
   --state-store "${STATE_STORE}" \
-  --metrics-listen-addr ${METRICS_LISTEN_ADDR}" \
+  --metrics-listen-addr "${METRICS_LISTEN_ADDR}" \
   ${DEV_FLAG}
