@@ -9,6 +9,9 @@ set -e
 : "${STATE_STORE:=state.yaml}"
 : "${PRODUCTION_MODE:=false}"
 
+OUTPUT_STORE="s3://pinax/${NETWORK}/${S3_BUCKET}?region=${S3_REGION}"
+NETWORK_URL="${NETWORK}.substreams.pinax.network:443"
+
 # Conditionally add --development-mode
 if [ "${PRODUCTION_MODE}" = "true" ]; then
   DEV_FLAG=""
@@ -17,7 +20,7 @@ else
 fi
 
 substreams-sink-files run \
-  "${NETWORK}" \
+  "${NETWORK_URL}" \
   "${MANIFEST}" \
   "${MODULE}" \
   "${OUTPUT_STORE}" \
